@@ -1,0 +1,76 @@
+.our-service {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f0f8ff;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .our-service .subtitle {
+    color: #006400;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .our-service .title {
+    font-family: 'Rowdies', cursive;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #2b2636;
+    margin: 0;
+  }
+  
+  .our-service .intro-text {
+    color: #555;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
+  
+  .service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+  
+  .service-card {
+    max-width: 280px;
+    text-align: center;
+  }
+  
+  .service-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+  }
+  
+  .service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2b2636;
+    margin: 10px 0;
+  }
+  
+  .service-card p {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .our-service .title {
+      font-size: 2rem;
+    }
+  
+    .service-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .service-card {
+      max-width: 90%;
+    }
+  }
+  

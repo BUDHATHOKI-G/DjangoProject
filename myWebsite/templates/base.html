@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calling Darjeeling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="{% static 'headers.css' %}">
+  <link rel="stylesheet" href="{% static 'navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'slider.css' %}">
+  <link rel="stylesheet" href="{% static 'services.css' %}">
+  <link rel="stylesheet" href="{% static 'button.css' %}">
+  <link rel="stylesheet" href="{% static 'footer.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="{% static 'about.css' %}">
+  <link rel="stylesheet" href="{% static 'FAQ.css' %}">
+  <link rel="stylesheet" href="{% static 'faq_chatbot.css' %}">
+  <link rel="stylesheet" href="{% static 'destination.css' %}">
+  <link rel="stylesheet" href="{% static 'activities.css' %}">
+  <link rel="stylesheet" href="{% static 'review.css' %}">
+</head>
+<body>
+
+  {% include 'partials/header.html' %}
+  {% include 'partials/navbar.html' %}
+
+  {% block content %}{% endblock %}
+
+  {% include 'partials/footer.html' %}
+
+  <!-- External JS libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Destination, chatbot, and page-specific scripts -->
+  {% block scripts %}{% endblock %}
+  {% block extra_scripts %}{% endblock %}
+
+  <!-- FAQ data for chatbot -->
+  {{ faq_data|json_script:"faq-data" }}
+
+  <!-- You can uncomment the chatbot HTML/JS below if needed -->
+  
+    <div class="chatbot-label">Got a Question..?</div>
+  <div class="faq-bot-container" id="faq-bot" style="display:none;">
+    <div class="faq-bot-header">Calling Darjeeling Assistant</div>
+    <div class="faq-bot-content" id="chat-box"></div>
+    <div class="faq-bot-questions" id="faq-questions"></div>
+  </div>
+
+  <button id="chatbot-toggle">💬</button>
+
+  <script>
+    const faqData = JSON.parse(document.getElementById('faq-data').textContent);
+    const chatBox = document.getElementById('chat-box');
+    const questionsBox = document.getElementById('faq-questions');
+    const faqBot = document.getElementById('faq-bot');
+    const toggleBtn = document.getElementById('chatbot-toggle');
+
+    faqData.forEach(qa => {
+      const qBtn = document.createElement('button');
+      qBtn.textContent = qa.question;
+      qBtn.className = 'faq-question';
+      qBtn.onclick = () => {
+        const qMsg = `<div class="chat-msg user">${qa.question}</div>`;
+        const aMsg = `<div class="chat-msg bot">${qa.answer}</div>`;
+        chatBox.innerHTML += qMsg + aMsg;
+        chatBox.scrollTop = chatBox.scrollHeight;
+      };
+      questionsBox.appendChild(qBtn);
+    });
+
+    toggleBtn.onclick = () => {
+  const isVisible = faqBot.style.display === 'flex';
+  faqBot.style.display = isVisible ? 'none' : 'flex';
+  document.querySelector('.chatbot-label').style.display = isVisible ? 'block' : 'none';
+  chatBox.scrollTop = chatBox.scrollHeight;
+};
+
+
+
+    document.addEventListener('click', (event) => {
+      const isClickInside = faqBot.contains(event.target) || toggleBtn.contains(event.target);
+      if (!isClickInside) {
+        faqBot.style.display = 'none';
+      }
+    });
+  </script>
+  
+</body>
+</html>

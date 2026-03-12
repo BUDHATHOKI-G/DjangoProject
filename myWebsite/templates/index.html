@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Image Slider -->
+<div class="swiper-container banner-slider">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <div class="slider-image-wrapper">
+        <img src="{% static 'img/banner-img.webp' %}" alt="Banner 1">
+      </div>
+      <div class="slide-caption">
+        <h2>We Know Darjeeling Like No One Else</h2>
+        <p>Book your adventure with confidence and explore with peace of mind.</p>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="slider-image-wrapper">
+        <img src="{% static 'img/banner_img2.webp' %}" alt="Banner 2">
+      </div>
+      <div class="slide-caption">
+        <h2>Discover the Magic of the Hills</h2>
+        <p>Scenic views, unforgettable moments, and pure serenity await you.</p>
+      </div>
+    </div>
+    <div class="swiper-slide"> 
+      <div class="slider-image-wrapper">
+        <img src="{% static 'img/banner_3.webp' %}" alt="Banner 3">
+      </div>
+      <div class="slide-caption">
+        <h2>Wake Up to the Majesty of Kanchenjunga</h2>
+        <p>Where the clouds part and the Himalayas greet your soul.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main>
+
+  <!-- Our Service -->
+  <section class="our-service">
+    <h4 class="subtitle">Our Service</h4>
+    <h2 class="title">Top Values <br> For You</h2>
+    <p class="intro-text">Relax & enjoy your journey while we handle the details with care.</p>
+
+    <div class="service-cards">
+      <div class="service-card">
+        <img src="{% static 'img/personalized-service.png' %}" alt="Personalized Service">
+        <h3>Personalized Service</h3>
+        <p>Explore destinations perfectly matched to your interests and preferences.</p>
+      </div>
+      <div class="service-card">
+        <img src="{% static 'img/secure.png' %}" alt="Best Price Guaranteed">
+        <h3>Best Price Guaranteed</h3>
+        <p>No hidden fees, no surprises. Just the best price for your dream adventure.</p>
+      </div>
+      <div class="service-card">
+        <img src="{% static 'img/support.png' %}" alt="24/7 Support">
+        <h3>24/7 Support</h3>
+        <p>Stress-free booking and expert assistance throughout your journey.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Packages -->
+  <section class="our-service">
+    <h4 class="subtitle">Popular Packages</h4>
+    <h2 class="title">Choose The Best Holiday Tour Package & Destination <br> For You</h2>
+    <p class="intro-text">Welcome to Calling Darjeeling.! We create amazing adventures just for you, filled with passion and care. We’re travel experts and love putting together trips that fit exactly what you want. Every part of your journey will be incredible.</p>
+    <div class="button-wrapper">
+      <a href="{% url 'tours' %}" class="view-tours-btn">VIEW ALL TOURS →</a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h4 class="subtitle" style="color: green;">How It Works</h4>
+    <h2 class="title" style="font-weight: 700;">How We Makes it Easy For you.</h2>
+
+    <div class="how-it-works-content">
+      <div class="steps">
+        <div class="step">
+          <span class="step-number" style="background: #ffe7cf;">01</span>
+          <h2>Choose Your Destinations</h2>
+          <p>Empowers travelers to handpick their dream destinations from a curated selection offered.</p>
+        </div>
+        <div class="step">
+          <span class="step-number" style="background: #d1f7ef;">02</span>
+          <h2>Pick Your Budget</h2>
+          <p>Enables travelers to specify their preferred spending range for their upcoming journey.</p>
+        </div>
+        <div class="step">
+          <span class="step-number" style="background: #e8e5ff;">03</span>
+          <h2>Follow Your Path</h2>
+          <p>Every journey is personal, and our role is to empower travelers to follow their own path to discovery.</p>
+        </div>
+        <a href="#" class="view-tours-btn">BOOK AN APPOINTMENT →</a>
+      </div>
+      <div class="image">
+        <img src="{% static 'img/how-it-work.webp' %}" alt="How it works image">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+      delay: 6000,
+      disableOnInteraction: false,
+    },
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+  });
+</script>
+{% endblock %}

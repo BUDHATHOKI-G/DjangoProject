@@ -1,0 +1,90 @@
+.button-wrapper {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .view-tours-btn {
+    display: inline-block;
+    background-color: #cc4b00; /* Dark orange */
+    color: #fff;
+    font-weight: bold;
+    padding: 14px 40px;
+    font-size: 16px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .view-tours-btn:hover {
+    background-color: #a63d00; /* Slightly darker on hover */
+    transform: translateY(-2px);
+  }
+
+    /* How it Works */
+  
+  .how-it-works {
+    padding: 4rem 2rem;
+    background: #f0f8ff;
+    text-align: center;
+  }
+
+  .how-it-works .step h2 {
+    font-family: 'Rowdies', sans-serif;
+    color: #2b2636;
+  }
+  
+  
+  .how-it-works .title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-family: 'Rowdies', sans-serif;
+  }
+  
+  .how-it-works-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+  }
+  
+  .how-it-works .steps {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+  }
+  
+  .how-it-works .image {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .how-it-works .image img {
+    width: 100%;
+    border-radius: 20px;
+  }
+  
+  .step {
+    margin-bottom: 2rem;
+  }
+  
+  .step-number {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: #2b2636;
+    margin-bottom: 0.5rem;
+  }
+  
+  .view-tours-btn {
+    margin-top: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+  }
+  

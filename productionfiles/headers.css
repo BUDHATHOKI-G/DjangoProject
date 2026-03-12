@@ -1,0 +1,395 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header Container */
+.site-header {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fffe 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(45, 134, 89, 0.1);
+  overflow: hidden;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(45,134,89,0.05)"/></pattern></defs><rect width="100" height="20" fill="url(%23dots)"/></svg>') repeat;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Branding Section */
+.branding {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.logo {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-text {
+  font-family: 'Rowdies', cursive;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: #1a3e2a;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, #1a3e2a 0%, #2d8659 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-accent {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #2d8659, #4ade80, #2d8659);
+  border-radius: 2px;
+  transform: scaleX(0);
+  animation: logoAccent 2s ease-in-out 1s forwards;
+}
+
+.tagline {
+  position: relative;
+  display: inline-block;
+}
+
+.tagline-text {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  color: #2d8659;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+
+.tagline-underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4ade80, transparent);
+  animation: underlineExpand 1.5s ease-out 1.5s forwards;
+}
+
+/* Contact Info Section */
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.email-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(45, 134, 89, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(45, 134, 89, 0.1);
+  transition: all 0.3s ease;
+}
+
+.email-section:hover {
+  background: rgba(45, 134, 89, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(45, 134, 89, 0.15);
+}
+
+.email-icon {
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+.email-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.email-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.email-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a3e2a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.email-value:hover {
+  color: #2d8659;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.whatsapp-button,
+.book-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-button {
+  background: linear-gradient(135deg, #25d366 0%, #1ebc59 100%);
+  color: white;
+  gap: 8px;
+}
+
+.whatsapp-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.whatsapp-icon img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.book-btn {
+  background: linear-gradient(135deg, #bf360c 0%, #d84315 100%);
+  color: white;
+  gap: 8px;
+}
+
+.book-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(191, 54, 12, 0.4);
+}
+
+.book-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.book-btn:hover .book-arrow {
+  transform: translateX(4px);
+}
+
+/* Button Shine Effect */
+.button-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.whatsapp-button:hover .button-shine,
+.book-btn:hover .button-shine {
+  left: 100%;
+}
+
+/* Header Decoration */
+.header-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #2d8659 0%, #4ade80 50%, #2d8659 100%);
+  opacity: 0.8;
+}
+
+.mountain-silhouette {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 60"><path d="M0 60 L200 20 L400 35 L600 10 L800 25 L1000 15 L1200 30 L1200 60 Z" fill="rgba(45,134,89,0.1)"/></svg>') repeat-x;
+  background-size: 1200px 60px;
+  opacity: 0.6;
+}
+
+/* Animations */
+@keyframes logoAccent {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underlineExpand {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 15px 30px;
+    gap: 20px;
+  }
+  
+  .contact-info {
+    gap: 20px;
+  }
+  
+  .email-section {
+    padding: 10px 16px;
+  }
+  
+  .whatsapp-button,
+  .book-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    gap: 25px;
+  }
+  
+  .branding {
+    align-items: center;
+  }
+  
+  .contact-info {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .email-section {
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+  
+  .whatsapp-button,
+  .book-btn {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 15px;
+  }
+  
+  .email-section {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .email-icon {
+    font-size: 1.2rem;
+  }
+  
+  .whatsapp-button,
+  .book-btn {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+  }
+  
+  .logo-text {
+    font-size: 2rem;
+  }
+  
+  .tagline-text {
+    font-size: 0.9rem;
+  }
+}

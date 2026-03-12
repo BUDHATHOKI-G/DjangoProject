@@ -1,0 +1,50 @@
+.main-navbar {
+    background-color: #004d40;
+    padding: 0.5rem 0;
+    font-family: 'Rowdies', cursive;
+  }
+  
+  .main-navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .main-navbar li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .main-navbar li a:hover {
+    color: #80cbc4;
+    text-decoration: underline;
+  }
+  
+/* for responsive style */
+
+  @media (max-width: 768px) {
+    .main-navbar ul {
+      flex-direction: column;
+      padding: 0;
+      gap: 10px;
+    }
+  
+    .main-navbar li {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .main-navbar a {
+      display: block;
+      padding: 10px;
+    }
+  }
+  
+
+ 
+  

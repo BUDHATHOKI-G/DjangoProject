@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Unforgettable Activities - Calling Darjeeling{% endblock %}
+
+{% block content %}
+<!-- ========= HERO SECTION ========== -->
+<section class="dest-hero">
+  <div class="dest-hero__overlay">
+    <h1 class="dest-hero__title">Discover Darjeeling's Hidden Gems</h1>
+    <p class="dest-hero__tag">Curated experiences for every adventurer</p>
+  </div>
+</section>
+
+<!-- ========= IMMERSIVE INTRO SECTION ========== -->
+<section class="immersive-intro">
+  <div class="container intro-container">
+    <div class="intro-content">
+      <div class="intro-badge">
+        <span class="badge-icon">✨</span>
+        <span>Exquisite Journeys</span>
+      </div>
+      <h2 class="intro-title">Your Gateway to Himalayan Wonders</h2>
+      <p class="intro-description">
+        Step into a realm of breathtaking landscapes, serene monasteries, and vibrant local culture. 
+        Each activity is meticulously designed to offer you an authentic and unforgettable experience 
+        in the heart of Darjeeling.
+      </p>
+      <div class="intro-stats">
+        <div class="stat-item">
+          <span class="stat-number">75+</span>
+          <span class="stat-label">Unique Adventures</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">50k+</span>
+          <span class="stat-label">Happy Explorers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">4.9★</span>
+          <span class="stat-label">Overall Rating</span>
+        </div>
+      </div>
+    </div>
+    <div class="intro-visual">
+      <div class="floating-elements">
+        <div class="float-item item-1">
+          <img src="{% static 'img/Pagoda.jpeg' %}" alt="Darjeeling Ropeway" class="float-image">
+        </div>
+        <div class="float-item item-2">
+          <img src="{% static 'img/hill.webp' %}" alt="Tiger Hill" class="float-image">
+        </div>
+        <div class="float-item item-3">
+          <img src="{% static 'img/forest.jpeg' %}" alt="Peace Pagoda" class="float-image">
+        </div>
+        <div class="float-item item-4">
+          <img src="{% static 'img/monastery.webp' %}" alt="Tea Garden" class="float-image">
+        </div>
+        <div class="float-item item-5">
+          <img src="{% static 'img/mirik.jpg' %}" alt="Batasia Loop" class="float-image">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= MODERN FILTERS SECTION ========== -->
+<section class="modern-filters">
+  <div class="container filters-container">
+    <div class="filters-header">
+      <h3>Tailor Your Darjeeling Adventure</h3>
+      <p>Select your preferred experience type and embark on a personalized journey.</p>
+    </div>
+    <div class="filter-pills">
+      <button class="filter-pill active" data-filter="all">
+        <span class="pill-icon">🌟</span>
+        <span class="pill-text">All Experiences</span>
+        <span class="pill-badge">12</span>
+      </button>
+      <button class="filter-pill" data-filter="nature">
+        <span class="pill-icon">🌲</span>
+        <span class="pill-text">Nature & Wildlife</span>
+        <span class="pill-badge">5</span>
+      </button>
+      <button class="filter-pill" data-filter="cultural">
+        <span class="pill-icon">🎭</span>
+        <span class="pill-text">Culture & Heritage</span>
+        <span class="pill-badge">4</span>
+      </button>
+      <button class="filter-pill" data-filter="adventure">
+        <span class="pill-icon">🧗</span>
+        <span class="pill-text">Adventure Sports</span>
+        <span class="pill-badge">3</span>
+      </button>
+      <button class="filter-pill" data-filter="food">
+        <span class="pill-icon">🍜</span>
+        <span class="pill-text">Food & Culinary</span>
+        <span class="pill-badge">2</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ========= PREMIUM ACTIVITIES GRID ========== -->
+<section class="premium-activities">
+  <div class="container activities-container">
+    {% for d in destinations %}
+      <article class="activity-card" data-cat="{{ d.category }}">
+        <div class="card-image-wrapper">
+          <img src="{% static d.image_url %}" alt="{{ d.name }}" class="card-image">
+          <div class="image-gradient"></div>
+          <div class="card-overlay">
+            <div class="overlay-top">
+              <span class="experience-badge">Premium</span>
+              <div class="quick-actions">
+                <button class="action-btn favorite">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                  </svg>
+                </button>
+                <button class="action-btn share">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share-2">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="overlay-bottom">
+              <div class="activity-rating">
+                <div class="stars">★★★★★</div>
+                <span class="rating-text">4.9 (234 reviews)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="content-header">
+            <h3 class="activity-title">{{ d.name }}</h3>
+            <div class="activity-meta">
+              <span class="duration">2-3 hours</span>
+              <span class="difficulty">Easy</span>
+            </div>
+          </div>
+          <p class="activity-description">{{ d.key_details }}</p>
+          <div class="activity-features">
+            <span class="feature-tag">📸 Photo Ready</span>
+            <span class="feature-tag">🌟 Highly Rated</span>
+          </div>
+          <div class="card-actions">
+            <button class="primary-btn">
+              <span>Explore Now</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </button>
+            <button class="secondary-btn">Quick View</button>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ========= EXPERIENCE SHOWCASE SECTION ========== -->
+<section class="experience-showcase">
+  <div class="container showcase-container">
+    <div class="showcase-header text-center">
+      <h2>Why Choose Our Curated Experiences?</h2>
+      <p>We blend local insights with global standards for your perfect journey.</p>
+    </div>
+    <div class="showcase-grid">
+      <div class="showcase-item">
+        <div class="showcase-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award">
+            <circle cx="12" cy="8" r="7"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.11"/>
+          </svg>
+        </div>
+        <h4>Expertly Curated</h4>
+        <p>Handpicked by local experts, ensuring authentic and high-quality adventures.</p>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin">
+            <path d="M12 12.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M12 22.5c-3.31 0-6-2.69-6-6A6 6 0 0 1 12 4a6 6 0 0 1 6 6.5c0 3.31-2.69 6-6 6Z"/>
+          </svg>
+        </div>
+        <h4>Local Immersion</h4>
+        <p>Connect deeply with Darjeeling's culture, people, and hidden natural beauty.</p>
+      </div>
+      <div class="showcase-item">
+        <div class="showcase-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smile">
+            <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>
+          </svg>
+        </div>
+        <h4>Memorable Moments</h4>
+        <p>Every journey is designed to create lasting memories and inspiring stories.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= TRAVELLER FAVOURITES SECTION ========== -->
+<section class="traveller-favorites">
+  <div class="container favorites-container">
+    <div class="favorites-header text-center">
+      <h2>Our Traveller Favourites</h2>
+      <p>Explore the activities that thousands of adventurers have loved the most.</p>
+    </div>
+    <div class="favorites-grid">
+      {% for d in top_experiences %}
+        <article class="favorite-card">
+          <div class="favorite-image-wrapper">
+            <img src="{% static d.image_url %}" alt="{{ d.name }}" class="favorite-image">
+            <div class="favorite-badge">
+              <span class="badge-icon">✨</span>
+              <span class="badge-text">Top Pick</span>
+            </div>
+          </div>
+          <div class="favorite-content">
+            <div class="favorite-header">
+              <h4 class="favorite-title">{{ d.name }}</h4>
+              <div class="favorite-rating">
+                <div class="rating-stars">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                </div>
+                <div class="rating-details">
+                  <span class="rating-score">4.9</span>
+                  <span class="rating-count">(1.2k reviews)</span>
+                </div>
+              </div>
+            </div>
+            <p class="favorite-description">{{ d.key_details }}</p>
+            <div class="favorite-features">
+              <span class="feature-tag">🏅 Awarded</span>
+              <span class="feature-tag">📸 Scenic Views</span>
+            </div>
+            <div class="favorite-stats">
+              <div class="stat-item">
+                <span class="stat-number">12k+</span>
+                <span class="stat-label">Visitors</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">Recommend</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ========= INSPIRATION CTA SECTION ========== -->
+<section class="inspiration-cta">
+  <div class="container cta-container">
+    <div class="cta-content">
+      <div class="cta-badge">
+        <span>🚀 Ready for Adventure?</span>
+      </div>
+      <h2>Your Darjeeling Journey Starts Here!</h2>
+      <p>Join thousands of happy travelers who have discovered the magic of the Himalayas with us. 
+         Uncover unique experiences and create memories that will last a lifetime.</p>
+      <div class="cta-features">
+        <span class="cta-feature">🎯 Personalized Itineraries</span>
+        <span class="cta-feature">💫 Unforgettable Memories</span>
+        <span class="cta-feature">🏆 Award-Winning Service</span>
+      </div>
+      <button class="cta-button">
+        <span>Begin Your Adventure</span>
+        <div class="button-shine"></div>
+      </button>
+    </div>
+    <div class="cta-decoration">
+      <div class="decoration-circle circle-1"></div>
+      <div class="decoration-circle circle-2"></div>
+      <div class="decoration-circle circle-3"></div>
+    </div>
+  </div>
+</section>
+{% endblock %}
