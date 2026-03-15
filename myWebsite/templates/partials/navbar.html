@@ -1,4 +1,4 @@
-<nav class="main-navbar">
+<!-- <nav class="main-navbar">
     <ul>
       <li><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'destination' %}">Destination</a></li>
@@ -7,4 +7,20 @@
       <li><a href="{% url 'reviews' %}">Reviews</a></li>
       <li><a href="{% url 'FAQ' %}">FAQs</a></li>
     </ul>
-  </nav>
+  </nav> -->
+
+  <nav class="main-navbar">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul id="navMenu">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'destination' %}">Destination</a></li>
+    <li><a href="{% url 'activities' %}">Activities</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'reviews' %}">Reviews</a></li>
+    <li><a href="{% url 'FAQ' %}">FAQs</a></li>
+  </ul>
+</nav>

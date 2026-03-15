@@ -1,4 +1,5 @@
-.main-navbar {
+
+/* .main-navbar {
     background-color: #004d40;
     padding: 0.5rem 0;
     font-family: 'Rowdies', cursive;
@@ -23,11 +24,11 @@
   .main-navbar li a:hover {
     color: #80cbc4;
     text-decoration: underline;
-  }
+  } */
   
 /* for responsive style */
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .main-navbar ul {
       flex-direction: column;
       padding: 0;
@@ -43,8 +44,99 @@
       display: block;
       padding: 10px;
     }
-  }
+  } */
   
 
  
-  
+  .main-navbar {
+  background-color: #004d40;
+  padding: 0.5rem 1rem;
+  font-family: 'Rowdies', cursive;
+  position: relative;
+}
+
+.main-navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.main-navbar li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.main-navbar li a:hover {
+  color: #80cbc4;
+  text-decoration: underline;
+}
+
+/* Hamburger button — hidden on desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animate hamburger → X when open */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-navbar ul {
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  /* Menu visible when .open is on the <ul> */
+  .main-navbar ul.open {
+    max-height: 400px;
+  }
+
+  .main-navbar li {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .main-navbar li a {
+    display: block;
+    padding: 12px 10px;
+  }
+}

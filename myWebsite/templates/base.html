@@ -34,6 +34,27 @@
   <!-- External JS libraries -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+  <!-- External JS libraries for hamburger menu in the navbar -->
+  <script>
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close menu when a link is clicked (single-page feel)
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', false);
+    });
+  });
+</script>
+
   <!-- Destination, chatbot, and page-specific scripts -->
   {% block scripts %}{% endblock %}
   {% block extra_scripts %}{% endblock %}
@@ -44,7 +65,7 @@
   <!-- You can uncomment the chatbot HTML/JS below if needed -->
   
     <div class="chatbot-label">Got a Question..?</div>
-  <div class="faq-bot-container" id="faq-bot" style="display:none;">
+    <div class="faq-bot-container" id="faq-bot" style="display:none;">
     <div class="faq-bot-header">Calling Darjeeling Assistant</div>
     <div class="faq-bot-content" id="chat-box"></div>
     <div class="faq-bot-questions" id="faq-questions"></div>
