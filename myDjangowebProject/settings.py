@@ -135,6 +135,9 @@ STATIC_ROOT = BASE_DIR / "productionfiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Auto email trigger if form is submitted
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 
 

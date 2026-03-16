@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Travel Inquiry{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+  <p class="hero-eyebrow">Tailored Travel Experiences</p>
+  <h1>Plan Your<br>Perfect Journey</h1>
+  <p>Share your travel dreams with us — our specialists will craft a bespoke itinerary just for you.</p>
+</div>
+
+<div class="page-body">
+
+<form id="inquiry-form" method="POST" action="{% url 'book_tour' %}">
+{% csrf_token %}
+
+<div id="form-wrap">
+
+<!-- Personal Details -->
+<div class="card">
+<p class="section-label">Personal Details</p>
+
+<div class="grid-2" style="margin-bottom:1rem;">
+<div class="field">
+<label>Full Name <span class="req">*</span></label>
+<input type="text" id="f-name" name="full_name">
+</div>
+
+<div class="field">
+<label>Nationality</label>
+<input type="text" id="f-nationality" name="nationality">
+</div>
+</div>
+
+<div class="grid-2">
+<div class="field">
+<label>Email Address <span class="req">*</span></label>
+<input type="email" id="f-email" name="email" oninput="validateEmail()">
+<p class="hint error-msg" id="email-error" style="display:none;color:red;">Please enter a valid email address.</p>
+</div>
+
+<div class="field">
+<label>Phone / WhatsApp <span class="req">*</span></label>
+<input
+  type="tel"
+  id="f-phone"
+  name="mobile"
+  inputmode="numeric"
+  pattern="[0-9+\s\-()]*"
+  oninput="this.value = this.value.replace(/[^0-9+\s\-()\-]/g, '')"
+  onkeypress="return /[0-9+\s\-()\-]/.test(event.key)"
+>
+<p class="hint">Include country code for WhatsApp (numbers only)</p>
+<p class="hint error-msg" id="phone-error" style="display:none;color:red;">Phone number must contain only digits.</p>
+</div>
+</div>
+</div>
+
+<!-- Trip Details -->
+<div class="card">
+<p class="section-label">Trip Details</p>
+
+<div style="margin-bottom:1rem;">
+<label style="font-size:12px;font-weight:500;color:var(--text-secondary);display:block;margin-bottom:8px;">Trip Type</label>
+
+<div class="chips-wrap">
+<span class="chip active" data-val="cultural">Cultural Tour</span>
+<span class="chip" data-val="trekking">Trekking</span>
+<span class="chip" data-val="adventure">Adventure</span>
+<span class="chip" data-val="wildlife">Wildlife Safari</span>
+<span class="chip" data-val="beach">Beach Escape</span>
+<span class="chip" data-val="honeymoon">Honeymoon</span>
+<span class="chip" data-val="pilgrimage">Pilgrimage</span>
+<span class="chip" data-val="custom">Custom</span>
+</div>
+
+<input type="hidden" id="f-trip-type" name="trip_type" value="cultural">
+
+</div>
+
+<div class="divider"></div>
+
+<div class="grid-2" style="margin-bottom:1rem;">
+<div class="field">
+<label>Travel Date <span class="req">*</span></label>
+<input type="date" id="f-date" name="travel_date">
+</div>
+
+<div class="field">
+<label>Return Date</label>
+<input type="date" id="f-return" name="return_date">
+</div>
+</div>
+
+<div class="grid-3" style="margin-bottom:1rem;">
+
+<div class="field">
+<label>Adults</label>
+
+<div class="counter-wrap">
+<button type="button" class="counter-btn" onclick="adjust('adults',-1)">−</button>
+<span class="counter-val" id="adults-val">2</span>
+<button type="button" class="counter-btn" onclick="adjust('adults',1)">+</button>
+</div>
+
+<input type="hidden" id="f-adults" name="adults" value="2">
+</div>
+
+<div class="field">
+<label>Children</label>
+
+<div class="counter-wrap">
+<button type="button" class="counter-btn" onclick="adjust('children',-1)">−</button>
+<span class="counter-val" id="children-val">0</span>
+<button type="button" class="counter-btn" onclick="adjust('children',1)">+</button>
+</div>
+
+<input type="hidden" id="f-children" name="children" value="0">
+</div>
+
+<div class="field">
+<label>Budget (INR)</label>
+
+<select id="f-budget" name="budget">
+<option value="">Select range</option>
+<option>Under ₹10,000</option>
+<option>₹10,000 – ₹25,000</option>
+<option>₹25,000 – ₹50,000</option>
+<option>₹50,000 – ₹1,00,000</option>
+<option>₹1,00,000 – ₹2,50,000</option>
+<option>₹2,50,000 – ₹5,00,000</option>
+<option>₹5,00,000+</option>
+</select>
+
+</div>
+
+</div>
+
+<div class="grid-2">
+
+<div class="field">
+<label>Pickup Location <span class="req">*</span></label>
+<input type="text" id="f-pickup" name="pickup_location">
+</div>
+
+<div class="field">
+<label>Accommodation Preference</label>
+
+<select id="f-accom" name="accommodation_preference">
+  <option value="">No preference</option>
+  <option value="budget">Budget / Hostel</option>
+  <option value="standard">3-Star Hotel</option>
+  <option value="luxury">5-Star / Luxury</option>
+</select>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Additional Info -->
+
+<div class="card">
+
+<p class="section-label">Additional Information</p>
+
+<div class="field" style="margin-bottom:1rem;">
+<label>Special Requests or Notes</label>
+<textarea id="f-requests" name="special_request"></textarea>
+</div>
+
+<div class="grid-2">
+
+<div class="field">
+<label>How did you hear about us?</label>
+
+<select id="f-source" name="heard_about_us">
+  <option value="">Select option</option>
+  <option value="google">Google Search</option>
+  <option value="facebook">Instagram / Facebook</option>
+  <option value="friend">Friend / Family</option>
+  <option value="blog">Travel Blog</option>
+  <option value="other">Other</option>
+</select>
+
+</div>
+
+<div class="field">
+<label>Preferred Contact Method</label>
+
+<select id="f-contact" name="preferred_contact_method">
+  <option value="email">Email</option>
+  <option value="whatsapp">WhatsApp</option>
+  <option value="phone">Phone Call</option>
+</select>
+
+</div>
+
+</div>
+
+</div>
+
+<button type="button" class="submit-btn" onclick="submitForm()">Send Inquiry →</button>
+
+<p class="form-footer">🔒 Your information is kept private and will only be used to plan your trip.</p>
+
+</div>
+
+</form>
+
+<!-- Success Modal -->
+<div id="success-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:1000; align-items:center; justify-content:center;">
+  <div id="success-card" style="background:#fff; border-radius:16px; padding:2.5rem 2rem; max-width:420px; width:90%; text-align:center; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.2); animation:popIn 0.3s ease;">
+
+    <div class="success-icon">&#10003;</div>
+
+    <h3>Inquiry Received!</h3>
+
+    <p>Thank you! Our travel specialists will reach out within 24 hours via your preferred contact method.</p>
+
+    <button type="button" class="new-inquiry" onclick="resetForm()">Submit Another Inquiry</button>
+
+  </div>
+</div>
+
+<style>
+  @keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+</style>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/bookTour.js' %}"></script>
+{% endblock %}

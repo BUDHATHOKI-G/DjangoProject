@@ -9,6 +9,7 @@
 
   <!-- CSS Files -->
   <link rel="stylesheet" href="{% static 'headers.css' %}">
+  <link rel="stylesheet" href="{% static 'bookTour.css' %}">
   <link rel="stylesheet" href="{% static 'navbar.css' %}">
   <link rel="stylesheet" href="{% static 'slider.css' %}">
   <link rel="stylesheet" href="{% static 'services.css' %}">
@@ -30,6 +31,7 @@
   {% block content %}{% endblock %}
 
   {% include 'partials/footer.html' %}
+  
 
   <!-- External JS libraries -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -58,6 +60,8 @@
   <!-- Destination, chatbot, and page-specific scripts -->
   {% block scripts %}{% endblock %}
   {% block extra_scripts %}{% endblock %}
+  {% block extra_js %}{% endblock %}
+  
 
   <!-- FAQ data for chatbot -->
   {{ faq_data|json_script:"faq-data" }}
